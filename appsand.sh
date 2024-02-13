@@ -26,20 +26,20 @@ aria2c $LINK
 fi
 
 if [ -n "dnf" ]; then
-dnf install squashfs-tools
+sudo dnf install squashfs-tools
   elif
   [ -n "apt" ]; then
-apt install squashfs-tools
+sudo apt install squashfs-tools
   elif
   [ -n "apk" ]; then
-apk add squashfs-tools
+doas apk add squashfs-tools
  elif
   [ -n "pacman" ]; then
-pacman -S squashfs-tools
+sudo pacman -S squashfs-tools
  elif
   [ -n "zypper" ]; then
-zypper in squashfs-tools
+sudo zypper in squashfs-tools
  elif
   [ -n "emerge" ]; then
-emerge --ask sys-fs/squashfs-tools
+sudo emerge --ask sys-fs/squashfs-tools
  fi
