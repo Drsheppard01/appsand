@@ -1,5 +1,8 @@
 #!/bin/sh
 
+set -e # exit on failure
+IFS=$(printf '\n\t') # smarter ifs
+
 ### 1. Download Alpinerotfs (we wanna find more simple and less) Ham
 ### 2. Include your content in Cheese using constants
 ### 3. Make desktop integration (Lettuce level)
