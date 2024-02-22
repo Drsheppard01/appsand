@@ -12,6 +12,12 @@ must_run_as_root() {
 	[ "$(id -u)" -eq 0 ] || die 100 'must be run as root'
 }
 
+apprun() {
+    export PATH="$APPDIR"/bin:"$PATH"
+    export LD_LIBRARY_PATH="$APPDIR"/lib64:"$APPDIR"/lib:"$LD_LIBRARY_PATH"
+    exec "$APPDIR/$(basename "$ARGV0")" "$@"
+}
+
 LINK="https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/x86_64/alpine-minirootfs-3.19.1-x86_64.tar.gz"
 NAME_RUNTIME="alpine-minirootfs-3.19.1-x86_64"
 
@@ -19,7 +25,7 @@ mkdir My-Roast-Project
 cd My-Roast-Project || return
 
 if [ -n "curl" ]; then
-curl $LINK > $NAME_RUNTIME
+curl $LINK > alpine-minirootfs-3.19.1-x86_64.tar.gz
   elif
   [ -n "wget" ]; then
 wget $LINK
