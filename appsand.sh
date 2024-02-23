@@ -22,7 +22,7 @@ LINK="https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/x86_64/alpine-miniroo
 NAME_RUNTIME="alpine-minirootfs-3.19.1-x86_64"
 
 mkdir My-Roast-Project
-cd My-Roast-Project || return
+cd My-Roast-Project
 
 if [ -n "curl" ]; then
 curl $LINK > alpine-minirootfs-3.19.1-x86_64.tar.gz
@@ -52,3 +52,15 @@ sudo zypper in squashfs-tools
   [ -n "emerge" ]; then
 sudo emerge --ask sys-fs/squashfs-tools
  fi
+
+untar_n_remove() {
+	tar -xf alpine-minirootfs-3.19.1-x86_64.tar.gz
+	rm alpine-minirootfs-3.19.1-x86_64.tar.gz
+}
+
+#### add your files in this. It's been automated ####
+
+roast() {
+	mkksquashfs /$HOME/My-Roast-Project/alpine-minirootfs-3.19.1-x86_64 roasted.sqfs -b 1M -comp zstd -Xcompression-level 19 -keep-as-directory -info
+}
+
