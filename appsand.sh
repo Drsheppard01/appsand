@@ -22,17 +22,19 @@ LINK="https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/x86_64/alpine-miniroo
 NAME_RUNTIME="alpine-minirootfs-3.19.1-x86_64"
 
 mkdir My-Roast-Project
-cd My-Roast-Project
+cd My-Roast-PrLINKoject
 
-if [ -n "curl" ]; then
-curl $LINK > alpine-minirootfs-3.19.1-x86_64.tar.gz
+download_runtime() {
+case [[ -n "curl" ]]; then
+        curl $LINK > alpine-minirootfs-3.19.1-x86_64.tar.gz
   elif
-  [ -n "wget" ]; then
-wget $LINK
+  [[ -n "wget" ]]; then
+        wget $LINK
   elif
-  [ -n "aria2c" ]; then
-aria2c $LINK
-fi
+  [[ -n "aria2c" ]]; then
+        aria2c $LINK
+esac
+}
 
 if [ -n "dnf" ]; then
 sudo dnf install squashfs-tools
