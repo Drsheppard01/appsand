@@ -63,6 +63,5 @@ untar_n_remove() {
 #### add your files in this. It's been automated ####
 
 roast() {
-	mkksquashfs /$HOME/My-Roast-Project/alpine-minirootfs-3.19.1-x86_64 roasted.sqfs -b 1M -comp zstd -Xcompression-level 19 -keep-as-directory -info
+	mksquashfs /$HOME/My-Roast-Project/alpine-minirootfs-3.19.1-x86_64 roasted.sqfs -b 1M -comp zstd -Xcompression-level 19 -keep-as-directory -info
 }
-
