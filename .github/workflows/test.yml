@@ -1,0 +1,19 @@
+name: Appsand CI
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Build Conty
+        run: |
+          chmod +x appsand.sh
+          sudo ./appsand.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: Appsand
+          path: appsand.sh
