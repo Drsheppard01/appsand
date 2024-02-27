@@ -22,7 +22,7 @@ LINK="https://dl-cdn.alpinelinux.org/alpine/v3.19/releases/x86_64/alpine-miniroo
 NAME_RUNTIME="alpine-minirootfs-3.19.1-x86_64"
 
 mkdir My-Roast-Project
-cd My-Roast-PrLINKoject
+cd My-Roast-Project
 
 download_runtime() {
 case [[ -n "curl" ]]; then
@@ -61,7 +61,3 @@ untar_n_remove() {
 }
 
 #### add your files in this. It's been automated ####
-
-roast() {
-	mksquashfs /$HOME/My-Roast-Project/alpine-minirootfs-3.19.1-x86_64 roasted.sqfs -b 1M -comp zstd -Xcompression-level 19 -keep-as-directory -info
-}
