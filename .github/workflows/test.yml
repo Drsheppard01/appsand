@@ -1,11 +1,17 @@
 name: Appsand CI
+
+on:
+  schedule:
+    - cron:  '0 0 * * 5'
+  workflow_dispatch:
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
 
-      - name: Build Conty
+      - name: Build Appsand
         run: |
           chmod +x appsand.sh
           sudo ./appsand.sh
