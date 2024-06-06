@@ -3,7 +3,7 @@
 set -e # exit on failure
 IFS=$(printf '\n\t') # smarter ifs
 
-### 1. Download Alpinerotfs (we wanna find more simple and less) Ham
+### 1. Download Alpinerootfs (we wanna find more simple and less) Ham
 ### 2. Include your content in Cheese using constants
 ### 3. Make desktop integration (Lettuce level)
 ### 4. Make Image using mksquashfs
@@ -12,7 +12,7 @@ must_run_as_root() {
 	[ "$(id -u)" -eq 0 ] || die 100 'must be run as root'
 }
 
-apprun() {
+applaunch() {
     export PATH="$APPDIR"/bin:"$PATH"
     export LD_LIBRARY_PATH="$APPDIR"/lib64:"$APPDIR"/lib:"$LD_LIBRARY_PATH"
     exec "$APPDIR/$(basename "$ARGV0")" "$@"
@@ -61,3 +61,9 @@ untar_n_remove() {
 }
 
 #### add your files in this. It's been automated ####
+
+### next stage
+
+mksquashfs $HOME/My-Roast-Project roasted.sh -b 1M -comp zstd -Xcompression-level 19 -keep-as-directory -info
+
+
